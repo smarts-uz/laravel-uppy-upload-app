@@ -19,7 +19,7 @@
             maxTotalFileSize: null,
             maxNumberOfFiles: 10,
             minNumberOfFiles: 0,
-            allowedFileTypes: [],
+            allowedFileTypes: null,
             requiredMetaFields: [],
         },
         meta: {},
@@ -56,10 +56,27 @@
         .use(Uppy.DropTarget, {target: document.body})
         .use(Uppy.GoldenRetriever)
         .use(Uppy.XHRUpload, {
-            endpoint: '/upload',
-            fieldName: 'uz_file',
+            endpoint: '/fileUpload',
+            fieldName: 'file',
+            headers: file => ({
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
+            }),
         });
 
+    uppy.on('upload-success', (file, response) => {
+        const httpStatus = response.status // HTTP status code
+        const httpBody = response.body   // extracted response data
+
+
+        // do something with file and response
+    });
+
+
+    uppy.on('file-added', (file) => {
+        uppy.setFileMeta(file.id, {
+            size: file.size,
+        })
+    });
     uppy.on('complete', result => {
         console.log('successful files:', result.successful)
         console.log('failed files:', result.failed)

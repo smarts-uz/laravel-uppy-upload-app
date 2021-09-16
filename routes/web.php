@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\FilepondController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,8 @@ Route::get('/two', function () {
     return view('two');
 });
 
-Route::get('/upload', [Controller::class, 'upload']);
+Route::any('/uploads', [Controller::class, 'upload']);
+Route::any('/pond', [Controller::class, 'pond']);
+//Route::any('/uploader', [Controller::class, 'uploader']);
+Route::post("/filepond",[FilepondController::class,"upload"]);
+Route::post("/fileUpload",[FilepondController::class,"fileUpload"]);
