@@ -10,19 +10,7 @@
 
 <script src="https://releases.transloadit.com/uppy/v2.1.0/uppy.min.js"></script>
 <script>
-    var uppy = new Uppy.Core()
-        .use(Uppy.Dashboard, {
-            inline: true,
-            target: '#drag-drop-area'
-        })
-        .use(Uppy.Tus, {endpoint: 'https://tusd.tusdemo.net/files/'})
-
-    uppy.on('complete', (result) => {
-        console.log('Upload complete! We’ve uploaded these files:', result.successful)
-    })
-
-
-    const uppy = new Uppy({
+    var uppy = new Uppy.Core({
         debug: true,
         autoProceed: false,
         restrictions: {
@@ -33,7 +21,7 @@
             requiredMetaFields: ['caption'],
         }
     })
-        .use(Dashboard, {
+        .use(Uppy.Dashboard, {
             trigger: '.UppyModalOpenerBtn',
             inline: true,
             target: '#drag-drop-area',
@@ -46,23 +34,26 @@
             ],
             browserBackButtonClose: false
         })
-        .use(GoogleDrive, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
-        .use(Dropbox, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
-        .use(Box, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
-        .use(Instagram, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
-        .use(Facebook, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
-        .use(OneDrive, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
-        .use(Webcam, { target: Dashboard })
-        .use(ScreenCapture, { target: Dashboard })
-        .use(ImageEditor, { target: Dashboard })
-        .use(Tus, { endpoint: 'https://tusd.tusdemo.net/files/' })
-        .use(DropTarget, {target: document.body })
-        .use(GoldenRetriever)
+        .use(Uppy.GoogleDrive, { target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io' })
+        .use(Uppy.Dropbox, { target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io' })
+        .use(Uppy.Instagram, { target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io' })
+        .use(Uppy.Facebook, { target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io' })
+        .use(Uppy.OneDrive, { target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io' })
+        .use(Uppy.Webcam, { target: Uppy.Dashboard })
+        .use(Uppy.ScreenCapture, { target: Uppy.Dashboard })
+        .use(Uppy.ImageEditor, { target: Uppy.Dashboard })
+        .use(Uppy.Tus, { endpoint: 'https://tusd.tusdemo.net/files/' })
+        .use(Uppy.DropTarget, {target: document.body })
+        .use(Uppy.GoldenRetriever)
 
     uppy.on('complete', result => {
         console.log('successful files:', result.successful)
         console.log('failed files:', result.failed)
     });
+
+
+
+
 </script>
 </body>
 </html>
