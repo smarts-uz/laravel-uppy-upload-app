@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,8 @@ Route::get('/', function () {
 Route::get('/app', function () {
     return view('app');
 });
+Route::get('/two', function () {
+    return view('two');
+});
+
+Route::get('/upload', [Controller::class, 'upload']);
