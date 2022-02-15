@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>Uppy</title>
-    <link href="https://releases.transloadit.com/uppy/v2.1.0/uppy.min.css" rel="stylesheet">
 </head>
 <body>
+
 <div id="drag-drop-area"></div>
 
+<link href="https://releases.transloadit.com/uppy/v2.1.0/uppy.min.css" rel="stylesheet">
 <script src="https://releases.transloadit.com/uppy/v2.1.0/uppy.min.js"></script>
 <script>
     var uppy = new Uppy.Core({
@@ -81,8 +82,6 @@
         console.log('successful files:', result.successful)
         console.log('failed files:', result.failed)
     });
-
-
 </script>
 </body>
 </html>

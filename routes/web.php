@@ -23,7 +23,10 @@ Route::get('/app', function () {
     return view('app');
 });
 Route::get('/two', function () {
-    return view('two');
+    return view('multi');
+
+});Route::get('/multi', function () {
+    return view('multi');
 });
 
 Route::any('/uploads', [Controller::class, 'upload']);

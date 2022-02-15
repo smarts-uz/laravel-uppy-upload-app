@@ -24,7 +24,7 @@ class Controller extends BaseController
 
     public function two()
     {
-        return view('app');
+        return view('multi');
     }
 
 }
